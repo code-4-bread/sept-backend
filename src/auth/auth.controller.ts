@@ -8,8 +8,8 @@ export class AuthController {
 
   @Post('/login')
   async login(@Res() res, @Body() loginDTO: LoginDTO) {
-    const accessToken = await this.authService.login(loginDTO);
+    const data = await this.authService.login(loginDTO);
 
-    return res.status(HttpStatus.OK).json({ accessToken });
+    return res.status(HttpStatus.OK).json({ data });
   }
 }

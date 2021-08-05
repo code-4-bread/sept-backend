@@ -3,5 +3,6 @@ export class CreateUserDTO {
   readonly email: string;
   readonly password: string;
   readonly type: string;
+  readonly about: string;
   readonly created_at: Date;
 }
