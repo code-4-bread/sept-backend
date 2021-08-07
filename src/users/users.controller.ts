@@ -1,4 +1,4 @@
-import { Body, Controller, HttpStatus, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, HttpStatus, Post, Res } from '@nestjs/common';
 import { CreateUserDTO } from './create-user.dto';
 import { UsersService } from './users.service';
 import { UpdateUserDTO } from './update-user.dto';
@@ -30,11 +30,19 @@ export class UsersController {
 
   @Post('/find')
   async findUser(@Res() res, @Body() findUserDTO: FindUserDTO) {
-    console.log(findUserDTO);
     const user = await this.usersService.findByEmail(findUserDTO.email);
 
     return res.status(HttpStatus.OK).json({
       user,
+    });
+  }
+
+  @Get('/findAll')
+  async findUsers(@Res() res) {
+    const users = await this.usersService.findAll();
+
+    return res.status(HttpStatus.OK).json({
+      users,
     });
   }
 }
