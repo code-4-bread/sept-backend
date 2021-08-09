@@ -29,4 +29,13 @@ export class CourseController {
 
     return res.status(HttpStatus.OK).json({courses});
   }
+
+  @Post('/delete')
+  async deleteCourse(@Res() res, @Body() { id } : any  ) {
+    await this.courseService.deleteCourse(id);
+
+    return res.status(HttpStatus.OK).json({
+      message: 'Course deleted',
+    });
+  }
 }

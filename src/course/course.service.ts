@@ -21,4 +21,8 @@ export class CourseService {
   async findCourseByUserId(userId): Promise<Course[]> {
     return this.courseModel.find({created_by: userId});
   }
+
+  async deleteCourse(courseId) {
+    return this.courseModel.deleteOne({_id: courseId});
+  }
 }
